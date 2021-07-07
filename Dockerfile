@@ -15,4 +15,3 @@ COPY target/ROOT.war /home/easybuggy4sb/ROOT.war
 EXPOSE 8080
 
 CMD java -jar /home/easybuggy4sb/ROOT.war
-
