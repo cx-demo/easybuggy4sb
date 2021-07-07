@@ -9,12 +9,12 @@ RUN adduser --system --home /home/easybuggy4sb easybuggy4sb
 RUN cd /home/easybuggy4sb/;
 RUN chgrp -R 0 /home/easybuggy4sb
 RUN chmod -R g=u /home/easybuggy4sb
+RUN apk add ca-certificates libstdc++ glib curl unzip
 
 USER easybuggy4sb
 WORKDIR /home/easybuggy4sb
 
 RUN if [ "$BUILDENV" = "TEST" ] ; then \
-    apk add ca-certificates libstdc++ glib curl unzip && \
     curl -o cxiast-java-agent.zip http://${IAST_URL}/iast/compilation/download/JAVA && \
     unzip cxiast-java-agent.zip -d /home/easybuggy4sb/cxiast-java-agent && \
     rm -rf cxiast-java-agent.zip && \
